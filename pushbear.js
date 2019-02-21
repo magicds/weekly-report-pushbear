@@ -9,7 +9,6 @@ module.exports = function (params) {
         const data = querystring.stringify(params);
         console.log(params, data);
         const options = {
-            protocol: 'https:',
             hostname: 'pushbear.ftqq.com',
             port: 80,
             path: '/sub',
