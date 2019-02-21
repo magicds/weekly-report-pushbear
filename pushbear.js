@@ -1,13 +1,12 @@
 const http = require('http');
 const querystring = require('querystring');
+
 module.exports = function (params) {
     return new Promise((resolve, reject) => {
         if (!params.sendkey) {
             params.sendkey = process.env.PUSHBEAR_SENDkEY;
         }
-
         const data = querystring.stringify(params);
-        console.log(params, data);
         const options = {
             hostname: 'pushbear.ftqq.com',
             port: 80,
@@ -18,10 +17,7 @@ module.exports = function (params) {
                 'Content-Length': Buffer.byteLength(data)
             }
         };
-
         const req = http.request(options, res => {
-            console.log(`STATUS: ${res.statusCode}`);
-            console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
             res.setEncoding('utf8');
             let info = '';
             res.on('data', chunk => {
@@ -41,7 +37,6 @@ module.exports = function (params) {
 
         // write data to request body
         req.write(data);
-        console.log(req);
         req.end();
     });
 
