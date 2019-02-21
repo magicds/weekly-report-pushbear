@@ -5,10 +5,11 @@ module.exports = function (params) {
         if (!params.sendkey) {
             params.sendkey = process.env.PUSHBEAR_SENDkEY;
         }
-        
+
         const data = querystring.stringify(params);
         console.log(params, data);
         const options = {
+            protocol: 'https',
             hostname: 'pushbear.ftqq.com',
             port: 80,
             path: '/sub',
