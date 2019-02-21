@@ -4,7 +4,9 @@ module.exports = function (params) {
         if (!params.sendkey) {
             params.sendkey = process.env.PUSHBEAR_SENDkEY;
         }
+        
         const data = JSON.stringify(params);
+        console.log(params, data);
         const options = {
             hostname: 'pushbear.ftqq.com',
             port: 80,
