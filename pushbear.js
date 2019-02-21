@@ -1,11 +1,12 @@
 const http = require('http');
+const querystring = require('querystring');
 module.exports = function (params) {
     return new Promise((resolve, reject) => {
         if (!params.sendkey) {
             params.sendkey = process.env.PUSHBEAR_SENDkEY;
         }
         
-        const data = JSON.stringify(params);
+        const data = querystring.stringify(params);
         console.log(params, data);
         const options = {
             hostname: 'pushbear.ftqq.com',
