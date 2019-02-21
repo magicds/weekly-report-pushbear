@@ -1,9 +1,10 @@
 const http = require('http');
-module.exports = function (data) {
+module.exports = function (params) {
     return new Promise((resolve, reject) => {
-        if (!data.sendkey) {
-            data.sendkey = process.env.PUSHBEAR_SENDkEY;
+        if (!params.sendkey) {
+            params.sendkey = process.env.PUSHBEAR_SENDkEY;
         }
+        const data = JSON.stringify(params);
         const options = {
             hostname: 'pushbear.ftqq.com',
             port: 80,
