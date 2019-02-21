@@ -40,6 +40,7 @@ module.exports = function (params) {
 
         // write data to request body
         req.write(data);
+        console.log(req);
         req.end();
     });
 
